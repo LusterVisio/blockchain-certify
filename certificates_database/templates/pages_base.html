@@ -1,0 +1,94 @@
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- ========== Meta Tags ========== -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="DiscreteDev">
+  <!-- ======== Page title ============ -->
+  <title>Certify {% block title %} {% endblock %}</title>
+  <!-- ========== Favicon Icon ========== -->
+  <link rel="shortcut icon" href="{% static 'frontend2/assets/img/favicon.png' %}">
+
+  <!-- ===========  All Stylesheet ================= -->
+  <!--  Icon css plugins -->
+  <link rel="stylesheet" href="{% static 'frontend2/assets/css/icons.css' %}">
+  <!--  animate css plugins -->
+  <link rel="stylesheet" href="{% static 'frontend2/assets/css/animate.css' %}">
+  <!--  slick css plugins -->
+  <link rel="stylesheet" href="{% static 'frontend2/assets/css/swiper-bundle.min.css' %}">
+  <!--  magnific-popup css plugins -->
+  <link rel="stylesheet" href="{% static 'frontend2/assets/css/magnific-popup.css' %}">
+  <!-- metis menu css file -->
+  <link rel="stylesheet" href="{% static 'frontend2/assets/css/metismenu.css' %}">
+  <!--  Bootstrap css plugins -->
+  <link rel="stylesheet" href="{% static 'frontend2/assets/css/bootstrap.min.css' %}">
+  <!--  main style css file -->
+  <link rel="stylesheet" href="{% static 'frontend2/assets/css/style.css' %}">
+
+  <script>
+    function validateForm() {
+      var name = document.getElementById("name").value;
+      var email = document.getElementById("email").value;
+      var subject = document.getElementById("subject").value;
+      var message = document.getElementById("message").value;
+
+      if (name === "" || email === "" || subject === "" || message === "") {
+        alert("Please fill out all fields.");
+        return false;
+      }
+      return true;
+    }
+  </script>
+
+</head>
+
+
+
+
+<body class="body-wrapper">
+
+
+  <!-- preloader start here -->
+  <div class="preloader">
+    <div class="spinner"></div>
+  </div>
+  <!-- preloader ending here -->
+
+
+
+  <!-- header section start hare -->
+
+{% block content %}
+{% endblock %}
+
+
+  <!-- footer section start hare -->
+<!-- footer section ends here -->
+
+
+  <!--  ALl JS Plugins
+    ====================================== -->
+
+  <script src="{% static 'frontend2/assets/js/jquery.min.js' %}"></script>
+  <script src="{% static 'frontend2/assets/js/script.js' %}"></script>
+
+  <script src="{% static 'frontend2/assets/js/modernizr.min.js' %}"></script>
+  <script src="{% static 'frontend2/assets/js/jquery.easing.js' %}"></script>
+  <script src="{% static 'frontend2/assets/js/popper.min.js' %}"></script>
+  <script src="{% static 'frontend2/assets/js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'frontend2/assets/js/isotope.pkgd.min.js' %}"></script>
+  <script src="{% static 'frontend2/assets/js/imageload.min.js' %}"></script>
+  <script src="{% static 'frontend2/assets/js/scrollUp.min.js' %}"></script>
+  <script src="{% static 'frontend2/assets/js/swiper-bundle.min.js' %}"></script>
+  <script src="{% static 'frontend2/assets/js/magnific-popup.min.js' %}"></script>
+  <script src="{% static 'frontend2/assets/js/wow.min.js' %}"></script>
+  <script src="{% static 'frontend2/assets/js/metismenu.js' %}"></script>
+  <script src="{% static 'frontend2/assets/js/active.js' %}"></script>
+</body>
+
+</html>

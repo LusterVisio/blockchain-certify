@@ -1,0 +1,107 @@
+
+{% extends 'pages_base.html' %}
+{% load static %}
+{% block title %} Signin {% endblock %}
+{% block content %}
+
+{% include '../partials/header.html' %}
+
+  <!-- banner section start hare -->
+
+  <section class="hero-welcome-wrapper hero-1">
+    <div class="single-slide text-white">
+      <div class="container">
+        <div class="row">
+          <div class="col-xl-7 col-12 col-lg-10 offset-lg-1 offset-xl-0">
+            <div class="hero-contents">
+              <h1 style="font-size: 60px;">Trusted Credentials, Powered by Blockchain</h1>  
+              <p>Certify enables schools to secure certificates on the blockchain, ensuring instant and tamper-proof verification for employers and institutions.</p>
+             
+              <div class="row mt-5"> 
+               <div class="col-md-6">
+                <div class="input-group rounded" >
+                  <form action="{% url 'search_results' %}" method="get">
+                    {% csrf_token %}
+                    <input name="q" type="text" class="form-control" size="90" placeholder="Insert Certificate ID or Blockchain ID...">
+                    <br>
+                    <button class="btn btn-warning">Click To Search</button>
+                </form>
+                </div>
+              </div>
+
+            </div>
+
+            </div>
+          </div>
+          <div class="col-xl-5 col-12 text-xl-end col-lg-10 offset-lg-1 offset-xl-0">
+            <div class="hero-mobile mt-5 mt-xl-0">
+              <img src="{% static 'frontend2/assets/img/certify.webp' %}" alt="certify">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- banner section end hare -->
+
+
+
+
+
+  <!-- feature section start hare -->
+
+  <section class="our-best-features-wrapper section-padding">
+    <div class="container">
+      <div class="nice-arrow-icon d-none d-lg-block wow fadeInDown" data-wow-duration="1.2s">
+        <img src="{% static 'frontend2/assets/img/shape/4.svg' %}" alt="3d bg shape">
+      </div>
+      <div class="col-xl-8 offset-xl-2 text-center">
+        <div class="block-contents">
+          <div class="section-title">
+            <h2>Key Certify Features</h2>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-4 col-md-6 col-12">
+          <div class="features-card-item style-1">
+            <div class="icon">
+              <img src="{% static 'frontend2/assets/img/feature/1.png' %}" alt="Icon">
+            </div>
+            <h3>Tamper-Proof Verification</h3>
+            <p>Certificates are securely stored on the blockchain, ensuring authenticity and preventing fraud.</p>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-12">
+          <div class="features-card-item style-1">
+            <div class="icon">
+              <img src="{% static 'frontend2/assets/img/feature/2.png' %}" alt="Icon">
+            </div>
+            <h3>Instant Validation</h3>
+            <p>Employers and institutions can verify credentials in seconds using a unique verification code.</p>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-12">
+          <div class="features-card-item style-1">
+            <div class="icon">
+              <img src="{% static 'frontend2/assets/img/feature/3.png' %}" alt="Icon">
+            </div>
+            <h3>Seamless Integration</h3>
+            <p>Schools can easily upload and manage certificates with a user-friendly dashboard.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- feature section start hare -->
+
+
+
+
+
+
+{% include '../partials/footer.html' %}
+
+{% endblock %}

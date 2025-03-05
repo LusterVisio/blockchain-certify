@@ -1,0 +1,50 @@
+
+{% extends 'pages_base.html' %}
+{% load static %}
+{% block title %} Signin {% endblock %}
+{% block content %}
+
+
+    <!-- ==========signin Section start Here========== -->
+    <div class="account section-padding">
+        <div class=" container">
+            <div class="row g-5 align-items-center">
+                <div class="col-lg-5">
+                    <div class="account__wrapper">
+                        <h3 class="title">Sign In</h3>
+                        {% include '../partials/messages.html' %}
+                        <form action ="" method="post" class="account__form">
+                            {% csrf_token %}
+
+                            <div class="form-floating mb-4">
+                                {{form.username}}
+                                <label for="floatingInput">Email/Username</label>
+                            </div>
+                            <div class="form-floating mb-4">
+                                {{form.password}}
+                                <label for="floatingPassword">Password</label>
+                            </div>
+                           
+                            <div class="form-group">
+                                <button type="submit" class="d-block custom-btn move-top"><span>Sign In</span></button>
+                            </div>
+                        </form>
+                        <div class="account-bottom">
+                            <p class="d-block cate pt-10">Dont have an account? <a href="signup.html"> Sign
+                                    Up</a></p>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    <div class="account-img text-center">
+                        <img src="{% static 'frontend2/assets/img/account/accont.png' %}" alt="account vector">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ==========signup Section ends Here========== -->
+
+{% endblock %}
+

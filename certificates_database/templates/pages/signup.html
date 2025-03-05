@@ -1,0 +1,71 @@
+
+
+
+{% extends 'pages_base.html' %}
+{% load static %}
+{% block title %} Signup {% endblock %}
+{% block content %}
+
+    <!-- ==========signup Section start Here========== -->
+    <div class="account section-padding">
+        <div class=" container">
+            <div class="row g-5 align-items-center">
+                <div class="col-lg-5">
+                   
+                    <div class="account__wrapper">
+                        <h3 class="title">School Admin Sign Up </h3>
+                        {% include '../partials/messages.html' %}
+                        <form action="" method="post" class="account__form">
+
+                            {% csrf_token %}
+
+                            <div class="form-floating mb-4">
+                                {{form.first_name}}
+                                <label for="floatingInput-user">User name</label>
+                            </div>
+                            <div class="form-floating mb-4">
+                                {{form.last_name}}
+                                <label for="floatingInput">Last Name</label>
+                            </div>
+                            <div class="form-floating mb-4"> 
+                                {{form.username}}
+                                <label for="floatingInput">Username</label>
+                            </div>
+                            <div class="form-floating mb-4"> 
+                                {{form.email}}
+                                <label for="floatingInput">Email</label>
+                            </div>
+
+                            <div class="form-floating mb-4">
+                                {{form.password}}
+                                <label for="floatingPassword">Password</label>
+                            </div>
+
+                            <div class="form-floating mb-4">
+                                {{form.password2}}
+                                <label for="floatingPassword2">Confirm Password</label>
+                            </div>
+                            
+                           
+                            <div class="form-group">
+                                <button type="submit" class="d-block custom-btn move-top"><span>Signup Now</span></button>
+                            </div>
+                        </form>
+                        <div class="account-bottom">
+                            <p class="d-block cate pt-10"> Have an Account? <a href="{% url 'auth:signin' %}"> Sign
+                                    in</a></p>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    <div class="account-img text-center">
+                        <img src="{% static 'frontend2/assets/img/account/signup.png' %}" alt="account vector">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ==========signup Section ends Here========== -->
+
+  {% endblock %}

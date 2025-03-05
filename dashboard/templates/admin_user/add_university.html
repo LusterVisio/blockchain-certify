@@ -1,0 +1,112 @@
+{% extends 'user_dashboard.html' %}
+{% load static %}
+{% block content %}
+
+ <!-- side nav -->
+
+{% if request.user.is_authenticated and request.user.is_staff %}
+ {% include 'partials/admin_sidebar.html' %}
+ {% endif %}
+
+ {% load custom_filters %}
+ <!-- side nav -->
+
+ <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+
+   <!-- top nav-->
+    {% include 'partials/top_nav.html' %}
+   <!-- top nav -->
+
+   <div class="container-fluid py-4">
+
+        <div class="row">
+            <div class="col-12 col-lg-8 mb-4">
+                <p>{% include 'partials/messages.html'%}</p>
+                <h4 class=" text-center my-4">Add/Edit University(School Information)</h4>
+            </div>
+        
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-8">
+    
+        <div class="card">
+
+            <div class="card-body">
+                <form action="" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="row justify-content-center">
+                        <!-- First Column -->
+                        <div class="col-md-6">
+                            <div class="input-group input-group-static mb-4">
+                                <label for="{{ form.name.id_for_label }}">Name</label>
+                                {{ form.name }}
+                            </div>
+                            <div class="input-group input-group-static mb-4">
+                                <label for="{{ form.short_name.id_for_label }}">Short Name</label>
+                                {{ form.short_name }}
+                            </div>
+                            <div class="input-group input-group-static mb-4">
+                                <label for="{{ form.motto.id_for_label }}">Motto</label>
+                                {{ form.motto }}
+                            </div>
+                            <div class="input-group input-group-static mb-4">
+                                <label for="{{ form.established_date.id_for_label }}">Established Date</label>
+                                {{ form.established_date }}
+                            </div>
+                            <div class="input-group input-group-static mb-4">
+                                <label for="{{ form.university_type.id_for_label }}">University Type</label>
+                                {{ form.university_type }}
+                            </div>
+                        </div>
+                
+                        <!-- Second Column -->
+                        <div class="col-md-6">
+                            <div class="input-group input-group-static mb-4">
+                                <label for="{{ form.address.id_for_label }}">Address</label>
+                                {{ form.address }}
+                            </div>
+                            <div class="input-group input-group-static mb-4">
+                                <label for="{{ form.phone_number.id_for_label }}">Phone Number</label>
+                                {{ form.phone_number }}
+                            </div>
+                            <div class="input-group input-group-static mb-4">
+                                <label for="{{ form.email.id_for_label }}">Email</label>
+                                {{ form.email }}
+                            </div>
+                            <div class="input-group input-group-static mb-4">
+                                <label for="{{ form.website.id_for_label }}">Website</label>
+                                {{ form.website }}
+                            </div>
+                            <div class="input-group input-group-static mb-4">
+                                <label for="{{ form.logo.id_for_label }}">Logo</label>
+                                {{ form.logo }}
+                            </div>
+                            <div class="form-check mb-4">
+                                {{ form.accreditation_status }}
+                                <label class="form-check-label" for="{{ form.accreditation_status.id_for_label }}">Accreditation Status</label>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <!-- Submit Button -->
+                    <div class="row justify-content-center">
+                        <div class="col-md-12 text-center">
+                            <button type="submit" class="btn bg-gradient-dark btn-lg mt-4 mb-0">Create University</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+            
+            
+        </div>
+    </div>
+
+     
+     </div>
+ </main>
+ {% endblock %}
+
+     

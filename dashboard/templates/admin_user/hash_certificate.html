@@ -1,0 +1,96 @@
+{% extends 'user_dashboard.html' %}
+{% load static %}
+{% block content %}
+
+ <!-- side nav -->
+
+{% if request.user.is_authenticated and request.user.is_staff %}
+ {% include 'partials/admin_sidebar.html' %}
+ {% endif %}
+
+ {% load custom_filters %}
+ <!-- side nav -->
+
+ <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+
+   <!-- top nav-->
+    {% include 'partials/top_nav.html' %}
+   <!-- top nav -->
+
+   <div class="container-fluid py-4">
+
+        <div class="row">
+            <div class="col-12 col-lg-8 mb-4">
+                <p>{% include 'partials/messages.html'%}</p>
+                <h4 class=" text-center my-4">Add/ hash students certificate with blockchain</h4>
+            </div>
+        
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-8">
+    
+        <div class="card">
+
+            <div class="card-body">
+                <h4>{% if form.instance.pk %}Update{% else %}Create{% endif %} Certificate</h4>
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+
+                    <div class="input-group input-group-static mb-4">
+                        <label for="{{ form.name.id_for_label }}">Student name</label>
+                        {{ form.student }}
+                    </div>
+
+                    <div class="input-group input-group-static mb-4">
+                        <label for="{{ form.name.id_for_label }}">Students Nationality</label>
+                        {{ form.nationality }}
+                    </div>
+
+
+                    <div class="input-group input-group-static mb-4">
+                        <label for="{{ form.name.id_for_label }}">Achievement Date</label>
+                        {{ form.achievement_date }}
+                    </div>
+
+                    <div class="input-group input-group-static mb-4">
+                        <label for="{{ form.name.id_for_label }}">Students Grade/GP</label>
+                        {{ form.certificate_score }}
+                    </div>
+                    
+                    
+                    <div class="input-group input-group-static mb-4">
+                        <label for="{{ form.name.id_for_label }}">Certificate Serial No</label>
+                        {{ form.serial_no }}
+                    </div>
+
+                    <div class="input-group input-group-static mb-4">
+                        <label for="{{ form.name.id_for_label }}">Certificate image (front side)</label>
+                        {{ form.cert_front }}
+                    </div>
+
+                    <div class="input-group input-group-static mb-4">
+                        <label for="{{ form.name.id_for_label }}">Certificate image (back side)</label>
+                        {{ form.cert_back }}
+                    </div>
+
+                    
+                  
+                    <button type="submit" class="btn btn-primary">Hash Certificate with Blockchain</button>
+                    <a href="{% url 'dashboard:certificates' %}" class="btn btn-secondary">Cancel</a>
+                </form>
+            
+            </div>
+        </div>
+
+            
+            
+        </div>
+    </div>
+
+     
+     </div>
+ </main>
+ {% endblock %}
+
+     

@@ -1,0 +1,100 @@
+{% extends 'pages_base.html' %}
+{% load static %}
+{% block title %} Signin {% endblock %}
+{% block content %}
+
+{% include '../partials/header.html' %}
+
+<!-- Custom CSS for table styling -->
+<style>
+    .table-custom {
+        font-size: 14px; /* Reduced font size */
+        color: white; /* White font color */
+    }
+    .table-custom th,
+    .table-custom td {
+        color: white; /* Ensure table headers and cells have white text */
+    }
+    .table-custom .img-thumbnail {
+        border: 1px solid #444; /* Add a border to images for better visibility */
+    }
+    .table-custom .text-muted {
+        color: #ccc !important; /* Light gray for placeholder text */
+    }
+</style>
+
+<!-- ========== Search Results Section Start ========== -->
+<div class="account section-padding">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                <h2 class="text-center mb-4">Search Results for "{{ query }}"</h2>
+
+                <!-- Display Django Messages -->
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+
+                {% if certificates %}
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped table-custom">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>Student Name</th>
+                                    <th>Serial No</th>
+                                    <th>Blockchain ID</th>
+                                    <th>Issuance Date</th>
+                                    <th>Certificate Front</th>
+                                    <th>Certificate Back</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for certificate in certificates %}
+                                <tr class="text-light">
+                                    <td class="text-light">{{ certificate.student.fullname }}</td>
+                                    <td class="text-light">{{ certificate.serial_no }}</td>
+                                    <td class="text-light">{{ certificate.txId }}</td>
+                                    <td class="text-light">{{ certificate.issuance_date|date:"Y-m-d" }}</td>
+                                    <td>
+                                        {% if certificate.cert_front %}
+                                            <img src="{{ certificate.cert_front.url }}" alt="Certificate Front" class="img-thumbnail" style="width: 100px; height: auto;">
+                                        {% else %}
+                                            <span class="text-muted">No Image</span>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if certificate.cert_back %}
+                                            <img src="{{ certificate.cert_back.url }}" alt="Certificate Back" class="img-thumbnail" style="width: 100px; height: auto;">
+                                        {% else %}
+                                            <span class="text-muted">No Image</span>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        <!-- <a href="#" class="btn btn-sm btn-primary">View</a>
+                                        <a href="#" class="btn btn-sm btn-success">Download</a> -->
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                {% else %}
+                    <div class="alert alert-warning text-center">
+                        No matching certificates found for "{{ query }}".
+                    </div>
+                {% endif %}
+
+                <div class="text-center mt-4">
+                    <a href="{% url 'home' %}" class="btn btn-warning">Back to Home</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ========== Search Results Section End ========== -->
+{% endblock %}
