@@ -43,14 +43,19 @@
                                 <label for="{{ form.fullname.id_for_label }}">Full Name</label>
                                 {{ form.fullname }}
                             </div>
+                            <div class="input-group input-group-static mb-4">
+                                <label for="{{ form.fullname.id_for_label }}">Student Email</label>
+                                {{ form.email }}
+                            </div>
+                            
                             
                             <div class="input-group input-group-static mb-4">
                                 <label for="{{ form.department.id_for_label }}">Department</label>
                                 {{ form.department }}
                             </div>
                             <div class="input-group input-group-static mb-4">
-                                <label for="{{ form.student_id.id_for_label }}">Student ID</label>
-                                {{ form.student_id }}
+                                <label for="{{ form.student_id.id_for_label }}">Mat Number</label>
+                                {{ form.mat_number }}
                             </div>
                             <div class="input-group input-group-static mb-4">
                                 <label for="{{ form.course_of_study.id_for_label }}">Course of Study</label>

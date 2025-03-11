@@ -56,12 +56,12 @@ class Department(models.Model):
 
 # Student Model
 class Student(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="student")
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="student")
     email = models.EmailField(unique=True, blank =True, null = True)
     fullname = models.CharField(max_length=100, blank=True, null =True)
     university = models.ForeignKey(UniversityProfile, on_delete=models.CASCADE, related_name="students", blank=True, null=True)
     department = models.ForeignKey(Department, on_delete=models.CASCADE, related_name="students", blank=True, null=True)
-    student_id = models.CharField(max_length=20, unique=True, blank=True, null=True)
+    mat_number = models.CharField(max_length=20, unique=True, blank=True, null=True)
     course_of_study = models.CharField(max_length=255, blank=True, null=True)
     enrollment_date = models.DateField(blank=True, null=True)
     graduation_date = models.DateField(blank=True, null=True)
@@ -71,4 +71,4 @@ class Student(models.Model):
     is_active = models.BooleanField(default=True)
 
     def __str__(self):
-        return f"{self.user.username} ({self.student_id})"
+        return f"{self.fullname} ({self.mat_number})"

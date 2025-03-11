@@ -100,12 +100,13 @@ class DepartmentForm(forms.ModelForm):
 class StudentForm(forms.ModelForm):
     class Meta:
         model = Student
-        fields = [ 'fullname', 'university', 'department', 'student_id', 'course_of_study', 'enrollment_date', 'graduation_date', 'phone_number', 'address', 'date_of_birth', 'is_active']
+        fields = [ 'fullname','email', 'university', 'department', 'mat_number', 'course_of_study', 'enrollment_date', 'graduation_date', 'phone_number', 'address', 'date_of_birth', 'is_active']
         widgets = {
   
             'fullname': forms.TextInput(attrs={'class': 'form-control'}),
+            'email': forms.TextInput(attrs={'class': 'form-control'}),
             'department': forms.Select(attrs={'class': 'form-control'}),
-            'student_id': forms.TextInput(attrs={'class': 'form-control'}),
+            'mat_number': forms.TextInput(attrs={'class': 'form-control'}),
             'course_of_study': forms.TextInput(attrs={'class': 'form-control'}),
             'enrollment_date': forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}),
             'graduation_date': forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}),

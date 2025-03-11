@@ -27,7 +27,7 @@
 <div class="account section-padding">
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-10">
+            <div class="col-md-12">
                 <h2 class="text-center mb-4">Search Results for "{{ query }}"</h2>
 
                 <!-- Display Django Messages -->
@@ -45,21 +45,27 @@
                             <thead class="thead-dark">
                                 <tr>
                                     <th>Student Name</th>
-                                    <th>Serial No</th>
-                                    <th>Blockchain ID</th>
-                                    <th>Issuance Date</th>
+                                    <th>Mat. No</th>
+                                    <th> Course </th>
+                                    <th> Graduation Year</th>
+                                    <th> University</th>
+                                    <th>Blockchain Hash</th>
+                                    <th>Certificate Status</th>
                                     <th>Certificate Front</th>
                                     <th>Certificate Back</th>
-                                    <th>Actions</th>
+                                   
                                 </tr>
                             </thead>
                             <tbody>
                                 {% for certificate in certificates %}
                                 <tr class="text-light">
                                     <td class="text-light">{{ certificate.student.fullname }}</td>
-                                    <td class="text-light">{{ certificate.serial_no }}</td>
-                                    <td class="text-light">{{ certificate.txId }}</td>
-                                    <td class="text-light">{{ certificate.issuance_date|date:"Y-m-d" }}</td>
+                                    <td class="text-light">{{ certificate.student.mat_number }}</td>
+                                    <td class="text-light">{{ certificate.student.course_of_study }}</td>
+                                    <td class="text-light">{{ certificate.student.graduation_date }}</td>
+                                    <td class="text-light">{{ certificate.student.university }}</td>
+                                    <td class="text-light"> {% if certificate.hash %} <span>Verified</span> {% endif %}</td>
+                                    <td class="text-light">{{ certificate.hash }}</td>
                                     <td>
                                         {% if certificate.cert_front %}
                                             <img src="{{ certificate.cert_front.url }}" alt="Certificate Front" class="img-thumbnail" style="width: 100px; height: auto;">
@@ -74,10 +80,7 @@
                                             <span class="text-muted">No Image</span>
                                         {% endif %}
                                     </td>
-                                    <td>
-                                        <!-- <a href="#" class="btn btn-sm btn-primary">View</a>
-                                        <a href="#" class="btn btn-sm btn-success">Download</a> -->
-                                    </td>
+                                   
                                 </tr>
                                 {% endfor %}
                             </tbody>

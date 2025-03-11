@@ -312,24 +312,26 @@ def department_delete(request, pk):
         return redirect('dashboard:department_list')
     return redirect('dashboard:department_list')
 
-
 @login_required
 def student_create(request):
     if request.method == "POST":
         form = StudentForm(request.POST)
         if form.is_valid():
-        
             student = form.save(commit=False)
             student.user = request.user
-          
             university = UniversityProfile.objects.filter(user=request.user).first()
             if university:
                 student.university = university
             student.save()
-            messages.success(request,'Student was created successfully' )
+            messages.success(request, 'Student was created successfully')
             return redirect('dashboard:student_list')
+        else:
+           
+            messages.error(request, f"There were errors in the form. Please correct them. {form.errors}")
+
     else:
         form = StudentForm()
+
     return render(request, 'admin_user/add_student.html', {'form': form})
 
 
@@ -386,24 +388,24 @@ def certificates(request):
     return render( request,  "admin_user/students_certificates.html",  {"certificates": certificates})
 
 
-
 @login_required
 def create_certificate(request):
     if request.method == 'POST':
-        form = CertificateForm(request.POST, request.FILES, user=request.user)  # Pass the logged-in user
+        form = CertificateForm(request.POST, request.FILES, user=request.user)
         if form.is_valid():
             certificate = form.save(commit=False)
-            certificate.user = request.user  # Assign the logged-in user
+            certificate.user = request.user
             certificate.save()
-            messages.success(request, "Student's certificate was hashed with blockchain and added to the database successfully.")
+            messages.success(request, "Student's certificate was hashed with blockchain and added successfully.")
             return redirect('dashboard:certificates')
         else:
-            messages.error(request, "Something went wrong. The student's certificate was not processed.")
-            return redirect('dashboard:certificates')
+            # Render the form again with validation errors
+            messages.error(request, "Please correct the errors below.")
     else:
-        form = CertificateForm(user=request.user)  # Pass the logged-in user
+        form = CertificateForm(user=request.user)
+    
+    # Moved outside of else to handle both initial GET and invalid POST
     return render(request, 'admin_user/hash_certificate.html', {'form': form})
-
 
 
 @login_required
